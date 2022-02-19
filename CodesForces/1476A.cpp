@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        ll n,k;
+        cin>>n>>k;
+        if(k>=n)
+        {
+            ll ans=(n+(k-n))/n;
+            if((n+(k-n))%n!=0)
+                ans++;
+            cout<<ans<<endl;
+        }
+        else
+        {
+            ll r=n%k;
+            ll m=(n/k)*n+(k-r);
+            ll ans=m/n;
+            if(m%n!=0)
+                ans++;
+            cout<<ans<<endl;
+        }
+
+    }
+
+}
