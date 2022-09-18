@@ -5,44 +5,39 @@ int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t;
-    cin>>t;
+    ll t, n;
+    cin >> t;
     while(t--)
     {
-        ll n;
-        cin>>n;
-        ll ar[n+4],mx=-1,pos=-1;
+        cin >> n;
+        ll ar[n+3],mx=0,ans=1;
+        map<ll,ll>mp;
         for(int i=1; i<=n; i++)
         {
+
             cin>>ar[i];
-            if(ar[i]>=mx)
-            {
-                mx=ar[i];
-                pos=i;
-            }
+            if(ar[i]>i)
+                ans=0;
+
         }
-        ll d = n-pos,ans=0,pos2=n;
-        ll mx2=-1;
-        //cout<<d<<endl;
-        for(int i=n; i>=pos+1; i--)
+        ll c=0;
+        vector<ll>v;
+        for(int i=1; i<=n; i++)
         {
-            if(ar[i]>mx2)
-            {
-                ans++;
-                pos2=i;
-                mx2=ar[i];
-
-            }
+            if(ar[i]==i)
+                c++;
 
         }
-
-
-        if(pos==n)
-            cout<<0<<endl;
+        if(ans)
+        {
+            for(int i=0; i<v.size(); i++)
+                cout<<v[i]<<" ";
+            cout<<endl;
+        }
         else
-        cout<<ans<<endl;
+            cout<<-1<<endl;
+
+
     }
-
-
-
 }
+
