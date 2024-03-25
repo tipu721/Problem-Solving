@@ -1,4 +1,4 @@
-package dsa.tree.binary;
+package dsa.tree.bt;
 
 
 import java.util.LinkedList;
@@ -57,6 +57,31 @@ public class BinaryTree {
     }
 
 
+
+    //insert with bfs
+    void insert(Node root, Integer newValue){
+        Queue<Node>queue = new LinkedList<>();
+        queue.add(root);
+        while (!queue.isEmpty()){
+            if(queue.element().left != null){
+                queue.add(queue.element().left);
+            }
+            else {
+                queue.element().left = new Node(12);
+                return;
+            }
+
+            if(queue.element().right != null){
+                queue.add(queue.element().right);
+            }
+            else {
+                queue.element().right = new Node(12);
+                return;
+            }
+        }
+    }
+
+
     //max dept with dfs
     int maxLevel(Node root){
         if(root == null){
@@ -86,6 +111,10 @@ public class BinaryTree {
         System.out.println("Traverse with DFS: ");
         tree.traverse(tree.root);
         System.out.println("Height with DFS: "+tree.maxLevel(tree.root));
+        System.out.println("Inser 12 in first available");
+        tree.insert(tree.root, 12);
+        System.out.println("Traverse with DFS: ");
+        tree.traverse(tree.root);
 
     }
 }
