@@ -26,22 +26,20 @@ public class BinarySearchTree {
     //using dfs
     Node insert(Node root, int value){
 
-        Node newNode = null;
 
         if(root == null){
-            return root;
+           root = new Node(value);
+           return root;
         }
 
         if(value < root.value){
-
-            newNode = insert(root.left, value);
+           root.left  = insert(root.left, value);
         }
         else if(value > root.value){
-            newNode = insert(root.right, value);
+           root.right = insert(root.right, value);
         }
 
-        return newNode;
-
+        return root;
 
     }
 
@@ -53,7 +51,6 @@ public class BinarySearchTree {
         bst.root.left = new Node(3);
         bst.root.right = new Node(10);
         bst.root.right.right = new Node(14);
-
 
         bst.traverse(bst.root);
         bst.insert(bst.root, 7);
